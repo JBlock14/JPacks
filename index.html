@@ -83,7 +83,7 @@
 </head>
 <body>
   <header>
-    <img src="logo.png" alt="Logo"> <!-- tu logo -->
+    <img src="assets/logo.png" alt="Logo"> <!-- tu logo -->
     <div class="secret-area"></div>
   </header>
 
@@ -117,8 +117,16 @@
       loginPanel.style.display = 'block';
     });
 
+    // Abrir formulario con doble clic en fondo si es owner
     document.body.addEventListener('dblclick', (e) => {
       if(owner && e.target === document.body){
+        formPanel.style.display = 'block';
+      }
+    });
+
+    // Abrir formulario con tecla "p" si es owner
+    document.addEventListener('keydown', (e) => {
+      if(owner && e.key.toLowerCase() === 'p'){
         formPanel.style.display = 'block';
       }
     });
