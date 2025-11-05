@@ -1,11 +1,177 @@
 <!-- barra.html -->
-<link rel="stylesheet" href="barra.css">
-<script src="barra.js" defer></script>
-
 <div class="barra-flotante">
-  <!-- ...contenido de la barra... -->
+  <a href="index.html">
+    <img src="../assets/gui/logo/logo.png" alt="Logo principal">
+  </a>
+  <div class="divisor"></div>
+  <span class="enlace" data-id="modrinth" data-tooltip="Perfil completo de Modrinth" onclick="animarLogoYRedirigir('modrinth', 'https://modrinth.com/user/JBlock')">Modrinth</span>
+  <span class="enlace" data-id="curseforge" data-tooltip="Perfil completo de CurseForge" onclick="animarLogoYRedirigir('curseforge', 'https://www.curseforge.com/members/jblock/projects')">CurseForge</span>
+  <span class="enlace" data-id="planetmc" data-tooltip="Perfil completo de PlanetMinecraft" onclick="animarLogoYRedirigir('planetmc', 'https://www.planetminecraft.com/member/jblock_/')">PlanetMinecraft</span>
+  <div class="divisor"></div>
+  <span class="enlace" data-id="youtube" data-tooltip="Canal oficial de YouTube" onclick="animarLogoYRedirigir('youtube', 'https://www.youtube.com/@JotaBlock')">YouTube</span>
+  <span class="enlace" data-id="discord" data-tooltip="Servidor oficial en Discord" onclick="animarLogoYRedirigir('discord', 'https://discord.gg/Ss3uMTrC')">Discord</span>
 </div>
 
 <div id="logoOverlay" class="logo-overlay">
   <img id="logoImage" src="" alt="Logo ritual">
 </div>
+
+<style>
+  @font-face {
+    font-family: 'MinecraftFont';
+    src: url("../minecraft_font.woff") format("woff");
+  }
+
+  .barra-flotante {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #0d1b2a;
+    color: #e0e0e0;
+    padding: 10px 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    font-family: 'MinecraftFont', sans-serif;
+  }
+
+  .barra-flotante img {
+    height: 32px;
+    image-rendering: pixelated;
+    transition: transform 0.2s ease;
+  }
+
+  .barra-flotante img:hover {
+    transform: scale(1.1);
+  }
+
+  .divisor {
+    width: 1px;
+    height: 24px;
+    background-color: #e0e0e0;
+    opacity: 0.3;
+  }
+
+  .enlace {
+    position: relative;
+    color: #e0e0e0;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 2px 6px;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+  }
+
+  .enlace[data-id="modrinth"]:hover {
+    color: #00ff00;
+    text-shadow: 0 0 1px #003300, 0 0 2px #00ff00;
+  }
+
+  .enlace[data-id="curseforge"]:hover {
+    color: #ff8800;
+    text-shadow: 0 0 1px #000000, 0 0 2px #000000;
+  }
+
+  .enlace[data-id="planetmc"]:hover {
+    color: #00ffff;
+    text-shadow: 0 0 1px #00ff00, 0 0 2px #00ff00;
+  }
+
+  .enlace[data-id="youtube"]:hover {
+    color: #cc0000;
+    text-shadow: 0 0 1px #330000, 0 0 2px #660000;
+  }
+
+  .enlace[data-id="discord"]:hover {
+    color: #3366cc;
+    text-shadow: 0 0 1px #001133, 0 0 2px #003366;
+  }
+
+  .enlace::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: -32px;
+    left: 50%;
+    transform: translateX(-50%) scale(0.9);
+    background-color: #1a2b3c;
+    color: #e0e0e0;
+    padding: 4px 10px;
+    border-radius: 10px;
+    font-size: 11px;
+    white-space: nowrap;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  }
+
+  .enlace:hover::after {
+    opacity: 1;
+    transform: translateX(-50%) translateY(4px) scale(1.05);
+  }
+
+  .logo-overlay {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.8);
+    opacity: 0;
+    z-index: 999;
+    pointer-events: none;
+  }
+
+  .logo-overlay.show {
+    animation: reboteZoom 0.5s ease forwards;
+  }
+
+  .logo-overlay img {
+    width: 320px;
+    height: auto;
+    image-rendering: pixelated;
+    opacity: 0.5;
+  }
+
+  @keyframes reboteZoom {
+    0% {
+      transform: translate(-50%, -50%) scale(0.8);
+      opacity: 0;
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(1.1);
+      opacity: 0.5;
+    }
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0.5;
+    }
+  }
+</style>
+
+<script>
+  function animarLogoYRedirigir(nombre, url) {
+    const logoMap = {
+      modrinth: "../assets/gui/logo/modrinth.png",
+      curseforge: "../assets/gui/logo/curseforge.png",
+      planetmc: "../assets/gui/logo/planetmc.png",
+      youtube: "../assets/gui/logo/youtube.png",
+      discord: "../assets/gui/logo/dc.png"
+    };
+
+    const overlay = document.getElementById("logoOverlay");
+    const img = document.getElementById("logoImage");
+
+    img.src = logoMap[nombre];
+    overlay.classList.remove("show");
+    void overlay.offsetWidth;
+    overlay.classList.add("show");
+
+    setTimeout(() => {
+      overlay.classList.remove("show");
+      window.open(url, "_blank");
+    }, 600);
+  }
+</script>
