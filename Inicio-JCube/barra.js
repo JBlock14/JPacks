@@ -1,10 +1,10 @@
 function animarLogoYRedirigir(nombre, url) {
   const logoMap = {
-    modrinth: "assets/gui/logo/modrinth.png",
-    curseforge: "assets/gui/logo/curseforge.png",
-    planetmc: "assets/gui/logo/planetmc.png",
-    youtube: "assets/gui/logo/youtube.png",
-    discord: "assets/gui/logo/dc.png"
+    modrinth: "../assets/gui/logo/modrinth.png",
+    curseforge: "../assets/gui/logo/curseforge.png",
+    planetmc: "../assets/gui/logo/planetmc.png",
+    youtube: "../assets/gui/logo/youtube.png",
+    discord: "../assets/gui/logo/dc.png"
   };
 
   const overlay = document.getElementById("logoOverlay");
@@ -20,3 +20,4 @@ function animarLogoYRedirigir(nombre, url) {
     window.open(url, "_blank");
   }, 600);
 }
+
