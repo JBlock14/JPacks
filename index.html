@@ -132,11 +132,13 @@
       transition: transform 0.8s ease, opacity 1s ease;
       image-rendering: pixelated;
       z-index: 3;
+      pointer-events: none;
     }
 
     .logo-icon.visible {
       transform: translate(-50%, -50%) translateY(0px);
       opacity: 1;
+      pointer-events: auto;
     }
   </style>
 </head>
