@@ -3,10 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <title>JotaBlock — Portal Ritual</title>
+
+  <!-- Estilos rituales de la barra flotante -->
+  <link rel="stylesheet" href="barra.css">
+
+  <!-- Lógica de animación y redirección -->
+  <script src="barra.js" defer></script>
+
+  <!-- Estilos propios de la página principal -->
   <style>
     @font-face {
       font-family: 'MinecraftFont';
-      src: url("../minecraft_font.woff") format("woff");
+      src: url("minecraft_font.woff") format("woff");
     }
 
     body {
@@ -40,11 +48,13 @@
   <!-- Contenedor donde se carga la barra flotante -->
   <div id="barra-container"></div>
 
+  <!-- Contenido principal -->
   <main>
     <h1>Bienvenido al universo ritual de JotaBlock</h1>
     <p>Este portal conecta tus mundos: Minecraft, audio modular, visualizaciones simbólicas y enlaces sagrados. Usa la barra superior para invocar tus perfiles y herramientas.</p>
   </main>
 
+  <!-- Carga dinámica de la barra flotante -->
   <script>
     fetch("barra.html")
       .then(res => res.text())
@@ -55,4 +65,3 @@
 
 </body>
 </html>
-
