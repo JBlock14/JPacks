@@ -4,17 +4,15 @@
   <meta charset="UTF-8">
   <title>JotaBlock — Portal Ritual</title>
 
-  <!-- Estilos rituales de la barra flotante -->
+  <!-- Estilos y lógica de la barra flotante -->
   <link rel="stylesheet" href="barra.css">
-
-  <!-- Lógica de animación y redirección -->
   <script src="barra.js" defer></script>
 
-  <!-- Estilos propios de la página principal -->
+  <!-- Estilos propios -->
   <style>
     @font-face {
       font-family: 'MinecraftFont';
-      src: url("../minecraft_font.woff") format("woff");
+      src: url("minecraft_font.woff") format("woff");
     }
 
     body {
@@ -45,24 +43,31 @@
 </head>
 <body>
 
-  <!-- Contenedor donde se carga la barra flotante -->
   <div id="barra-container"></div>
 
-  <!-- Contenido principal -->
   <main>
     <h1>Bienvenido al universo ritual de JotaBlock</h1>
     <p>Este portal conecta tus mundos: Minecraft, audio modular, visualizaciones simbólicas y enlaces sagrados. Usa la barra superior para invocar tus perfiles y herramientas.</p>
   </main>
 
-  <!-- Carga dinámica de barra.html -->
   <script>
     fetch("barra.html")
       .then(res => res.text())
       .then(html => {
-        document.getElementById("barra-container").innerHTML = html;
+        const temp = document.createElement("div");
+        temp.innerHTML = html;
+
+        // Inyectar <link> y <script> desde barra.html (redundante pero útil si se reutiliza)
+        temp.querySelectorAll("link, script").forEach(el => {
+          document.head.appendChild(el.cloneNode(true));
+        });
+
+        // Inyectar contenido visual
+        temp.querySelectorAll("div").forEach(el => {
+          document.getElementById("barra-container").appendChild(el.cloneNode(true));
+        });
       });
   </script>
 
 </body>
 </html>
-
