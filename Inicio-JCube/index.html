@@ -23,34 +23,32 @@
       padding-top: 80px;
     }
 
-    .contenido-principal {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: flex-start;
-      gap: 40px;
-      padding: 40px 20px;
-      max-width: 1000px;
-      margin: auto;
-    }
-
-    .pack-saturacion {
+    /* Pestaña lateral izquierda */
+    .pestana-pack {
+      position: fixed;
+      top: 100px;
+      left: 0;
       width: 220px;
       background-color: #142437;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      border-top-right-radius: 12px;
+      box-shadow: 4px 4px 12px rgba(0,0,0,0.4);
+      z-index: 900;
       font-family: 'MinecraftFont', sans-serif;
+      overflow: hidden;
+    }
+
+    .pestana-pack .contenido-pack {
+      padding: 20px;
       text-align: center;
     }
 
-    .pack-saturacion h2 {
-      font-size: 18px;
+    .pestana-pack h2 {
+      font-size: 16px;
       margin-bottom: 12px;
       color: #00ffff;
     }
 
-    .pack-saturacion img {
+    .pestana-pack img {
       width: 100%;
       height: auto;
       image-rendering: pixelated;
@@ -58,9 +56,21 @@
       box-shadow: 0 0 6px rgba(0,255,255,0.3);
     }
 
+    .pestana-pack .doblez-inferior {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 40px;
+      height: 40px;
+      background-color: #0d1b2a;
+      clip-path: polygon(100% 100%, 0% 100%, 100% 0%);
+      box-shadow: -2px -2px 6px rgba(0,0,0,0.3);
+    }
+
     main {
-      flex: 1;
-      padding: 20px;
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
     }
   </style>
 </head>
@@ -69,17 +79,19 @@
   <!-- Contenedor de la barra flotante -->
   <div id="barra-container"></div>
 
-  <!-- Contenido principal con apartado lateral -->
-  <div class="contenido-principal">
-    <aside class="pack-saturacion">
+  <!-- Pestaña lateral izquierda -->
+  <div class="pestana-pack">
+    <div class="contenido-pack">
       <h2>Best Saturation Pack</h2>
       <img src="../assets/packs/icon/bsl_icon.png" alt="BSL Icon">
-    </aside>
-
-    <main>
-      <!-- Espacio vacío para contenido futuro -->
-    </main>
+    </div>
+    <div class="doblez-inferior"></div>
   </div>
+
+  <!-- Contenido principal vacío -->
+  <main>
+    <!-- Aquí puedes agregar más secciones rituales -->
+  </main>
 
   <!-- Carga dinámica de barra.html -->
   <script>
