@@ -1,23 +1,70 @@
-<div id="barra-container"></div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>JotaBlock — Portal Ritual</title>
+  <style>
+    @font-face {
+      font-family: 'MinecraftFont';
+      src: url("minecraft_font.woff") format("woff");
+    }
 
-<script>
-  fetch("barra.html")
-    .then(res => res.text())
-    .then(html => {
-      const container = document.getElementById("barra-container");
+    body {
+      margin: 0;
+      background-color: #0d1b2a;
+      color: #e0e0e0;
+      font-family: 'MinecraftFont', sans-serif;
+      padding-top: 80px; /* espacio para la barra flotante */
+    }
 
-      // Crear un documento temporal para extraer <link> y <script>
-      const temp = document.createElement("div");
-      temp.innerHTML = html;
+    main {
+      max-width: 800px;
+      margin: auto;
+      padding: 40px 20px;
+      text-align: center;
+    }
 
-      // Extraer y agregar <link> y <script> al <head>
-      temp.querySelectorAll("link, script").forEach(el => {
-        document.head.appendChild(el.cloneNode(true));
+    h1 {
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Contenedor donde se carga la barra flotante -->
+  <div id="barra-container"></div>
+
+  <!-- Contenido principal -->
+  <main>
+    <h1>Bienvenido al universo ritual de JotaBlock</h1>
+    <p>Este portal conecta tus mundos: Minecraft, audio modular, visualizaciones simbólicas y enlaces sagrados. Usa la barra superior para invocar tus perfiles y herramientas.</p>
+  </main>
+
+  <!-- Carga dinámica de barra.html con ejecución de <link> y <script> -->
+  <script>
+    fetch("barra.html")
+      .then(res => res.text())
+      .then(html => {
+        const temp = document.createElement("div");
+        temp.innerHTML = html;
+
+        // Inyectar <link> y <script> en <head>
+        temp.querySelectorAll("link, script").forEach(el => {
+          document.head.appendChild(el.cloneNode(true));
+        });
+
+        // Inyectar contenido visual en #barra-container
+        temp.querySelectorAll("div").forEach(el => {
+          document.getElementById("barra-container").appendChild(el.cloneNode(true));
+        });
       });
+  </script>
 
-      // Insertar el resto del contenido en el contenedor
-      temp.querySelectorAll("div").forEach(el => {
-        container.appendChild(el.cloneNode(true));
-      });
-    });
-</script>
+</body>
+</html>
