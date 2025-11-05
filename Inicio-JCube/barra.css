@@ -1,6 +1,6 @@
 @font-face {
   font-family: 'MinecraftFont';
-  src: url("minecraft_font.woff") format("woff");
+  src: url("../minecraft_font.woff") format("woff");
 }
 
 .barra-flotante {
@@ -130,3 +130,4 @@
     opacity: 0.5;
   }
 }
+
