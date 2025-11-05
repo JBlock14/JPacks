@@ -12,7 +12,7 @@
   <style>
     @font-face {
       font-family: 'MinecraftFont';
-      src: url("../minecraft_font.woff") format("woff");
+      src: url("../assets/gui/fonts/minecraft_font.woff") format("woff");
     }
 
     body {
@@ -23,10 +23,44 @@
       padding-top: 80px;
     }
 
-    main {
-      max-width: 800px;
-      margin: auto;
+    .contenido-principal {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 40px;
       padding: 40px 20px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .pack-saturacion {
+      width: 220px;
+      background-color: #142437;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+      font-family: 'MinecraftFont', sans-serif;
+      text-align: center;
+    }
+
+    .pack-saturacion h2 {
+      font-size: 18px;
+      margin-bottom: 12px;
+      color: #00ffff;
+    }
+
+    .pack-saturacion img {
+      width: 100%;
+      height: auto;
+      image-rendering: pixelated;
+      border-radius: 8px;
+      box-shadow: 0 0 6px rgba(0,255,255,0.3);
+    }
+
+    main {
+      flex: 1;
+      padding: 20px;
       text-align: center;
     }
 
@@ -43,13 +77,23 @@
 </head>
 <body>
 
+  <!-- Contenedor de la barra flotante -->
   <div id="barra-container"></div>
 
-  <main>
-    <h1>Bienvenido al universo ritual de JotaBlock</h1>
-    <p>Este portal conecta tus mundos: Minecraft, audio modular, visualizaciones simbólicas y enlaces sagrados. Usa la barra superior para invocar tus perfiles y herramientas.</p>
-  </main>
+  <!-- Contenido principal con apartado lateral -->
+  <div class="contenido-principal">
+    <aside class="pack-saturacion">
+      <h2>Best Saturation Pack</h2>
+      <img src="../assets/packs/icon/bsl_icon.png" alt="BSL Icon">
+    </aside>
 
+    <main>
+      <h1>Bienvenido al universo ritual de JotaBlock</h1>
+      <p>Este portal conecta tus mundos: Minecraft, audio modular, visualizaciones simbólicas y enlaces sagrados. Usa la barra superior para invocar tus perfiles y herramientas.</p>
+    </main>
+  </div>
+
+  <!-- Carga dinámica de barra.html -->
   <script>
     fetch("barra.html")
       .then(res => res.text())
@@ -57,7 +101,7 @@
         const temp = document.createElement("div");
         temp.innerHTML = html;
 
-        // Inyectar <link> y <script> desde barra.html (redundante pero útil si se reutiliza)
+        // Inyectar <link> y <script> desde barra.html si existen
         temp.querySelectorAll("link, script").forEach(el => {
           document.head.appendChild(el.cloneNode(true));
         });
@@ -71,4 +115,3 @@
 
 </body>
 </html>
-
