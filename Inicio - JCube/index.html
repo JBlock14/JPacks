@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>J Cube Oficial</title>
+  <link rel="icon" type="image/png" href="assets/gui/logo/icon.png">
+  <style>
+    @font-face {
+      font-family: 'Minecraft';
+      src: url('minecraft_font.woff') format('woff');
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: 'Minecraft', sans-serif;
+      background-image: url('assets/gui/panorama/panorama.png');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      image-rendering: pixelated;
+      overflow: hidden;
+      cursor: pointer;
+    }
+
+    .welcome {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      font-size: clamp(20px, 5vw, 64px);
+      text-transform: uppercase;
+      color: white;
+      text-shadow: 2px 2px 4px #000;
+      animation: float 3s ease-in-out infinite;
+      transition: transform 0.8s ease, opacity 0.6s ease;
+      z-index: 2;
+    }
+
+    @keyframes float {
+      0%   { transform: translate(-50%, -50%) translateY(0); }
+      50%  { transform: translate(-50%, -50%) translateY(-10px); }
+      100% { transform: translate(-50%, -50%) translateY(0); }
+    }
+
+    .subtitle-bar,
+    .logo-message-bar {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background-image: url('assets/gui/text_background.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+      background-position: center;
+      image-rendering: pixelated;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding-top: 4px;
+      transform-origin: center top;
+      transform: scaleX(0);
+      opacity: 0;
+      transition: transform 0.8s ease, opacity 0.6s ease;
+      z-index: 2;
+    }
+
+    .subtitle-bar.visible,
+    .logo-message-bar.visible {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+
+    .subtitle-text,
+    .logo-message-text {
+      color: white;
+      font-size: 15px;
+      text-shadow: 1px 1px 2px #000;
+      text-transform: none;
+      letter-spacing: 0.5px;
+    }
+
+    .subtitle-text.visible {
+      opacity: 1;
+    }
+
+    .hide-welcome {
+      transform: translate(-50%, -150%);
+      opacity: 0;
+    }
+
+    .retract-subtitle {
+      transform: scale(0.1) translateY(-100%);
+      opacity: 0;
+    }
+
+    .water-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+      background-image: url('assets/gui/panorama/water_panorama.png');
+      background-size: 128px 4096px;
+      background-repeat: repeat;
+      background-position: 0px 0px;
+      image-rendering: pixelated;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .water-overlay.visible {
+      opacity: 0.5;
+    }
+
+    .logo-icon {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      width: clamp(64px, 20vw, 256px);
+      height: clamp(64px, 20vw, 256px);
+      background-image: url('assets/gui/logo/button_icon.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      transform: translate(-50%, -50%) translateY(20px);
+      opacity: 0;
+      transition: transform 0.8s ease, opacity 1s ease;
+      image-rendering: pixelated;
+      z-index: 3;
+    }
+
+    .logo-icon.visible {
+      transform: translate(-50%, -50%) translateY(0px);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="water-overlay" id="waterOverlay"></div>
+  <div class="logo-icon" id="logoIcon"></div>
+  <div class="logo-message-bar" id="logoMessage">
+    <div class="logo-message-text">Preciona el logo para comenzar tu aventura...</div>
+  </div>
+  <div class="welcome" id="welcome">Bienvenido</div>
+  <div class="subtitle-bar" id="subtitle">
+    <div class="subtitle-text" id="subtitleText">Preciona para continuar...</div>
+  </div>
+
+  <script>
+    let interacted = false;
+    let subtitleShown = false;
+    let logoClicked = false;
+
+    function showSubtitle() {
+      if (!interacted) {
+        document.getElementById('subtitle').classList.add('visible');
+        document.getElementById('subtitleText').classList.add('visible');
+        subtitleShown = true;
+      }
+    }
+
+    function retractAll() {
+      if (!interacted) {
+        interacted = true;
+        document.getElementById('welcome').classList.add('hide-welcome');
+        if (subtitleShown) {
+          document.getElementById('subtitle').classList.remove('visible');
+          document.getElementById('subtitle').classList.add('retract-subtitle');
+          document.getElementById('subtitleText').classList.remove('visible');
+        }
+
+        const overlay = document.getElementById('waterOverlay');
+        overlay.classList.add('visible');
+
+        const enterSound = new Audio('assets/gui/panorama/enter_water.ogg');
+        enterSound.play();
+
+        enterSound.addEventListener('ended', () => {
+          const ambientSound = new Audio('assets/gui/panorama/underwater.ogg');
+          ambientSound.loop = true;
+          ambientSound.volume = 0.8;
+          ambientSound.play();
+
+          const logo = document.getElementById('logoIcon');
+          logo.classList.add('visible');
+
+          setTimeout(() => {
+            if (!logoClicked) {
+              document.getElementById('logoMessage').classList.add('visible');
+            }
+          }, 5000);
+        });
+
+        let frame = 0;
+        const frameHeight = 16;
+        const totalFrames = 32;
+
+        setInterval(() => {
+          frame = (frame + 1) % totalFrames;
+          const yOffset = frame * frameHeight;
+          overlay.style.backgroundPosition = `0px -${yOffset * 8}px`;
+        }, 250);
+      }
+    }
+
+    document.getElementById('logoIcon').addEventListener('click', () => {
+      logoClicked = true;
+      window.location.href = 'Inicio - JCube/index.html';
+    });
+
+    setTimeout(showSubtitle, 5000);
+    document.addEventListener('click', retractAll);
+    document.addEventListener('touchstart', retractAll);
+  </script>
+</body>
+</html>
