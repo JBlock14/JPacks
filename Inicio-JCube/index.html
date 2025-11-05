@@ -61,17 +61,6 @@
     main {
       flex: 1;
       padding: 20px;
-      text-align: center;
-    }
-
-    h1 {
-      font-size: 32px;
-      margin-bottom: 20px;
-    }
-
-    p {
-      font-size: 16px;
-      line-height: 1.6;
     }
   </style>
 </head>
@@ -88,8 +77,7 @@
     </aside>
 
     <main>
-      <h1>Bienvenido al universo ritual de JotaBlock</h1>
-      <p>Este portal conecta tus mundos: Minecraft, audio modular, visualizaciones simbólicas y enlaces sagrados. Usa la barra superior para invocar tus perfiles y herramientas.</p>
+      <!-- Espacio vacío para contenido futuro -->
     </main>
   </div>
 
@@ -101,12 +89,10 @@
         const temp = document.createElement("div");
         temp.innerHTML = html;
 
-        // Inyectar <link> y <script> desde barra.html si existen
         temp.querySelectorAll("link, script").forEach(el => {
           document.head.appendChild(el.cloneNode(true));
         });
 
-        // Inyectar contenido visual
         temp.querySelectorAll("div").forEach(el => {
           document.getElementById("barra-container").appendChild(el.cloneNode(true));
         });
