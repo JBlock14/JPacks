@@ -14,7 +14,7 @@
       background-color: #0d1b2a;
       color: #e0e0e0;
       font-family: 'MinecraftFont', sans-serif;
-      padding-top: 80px; /* espacio para la barra flotante */
+      padding-top: 80px;
     }
 
     main {
@@ -46,7 +46,7 @@
     <p>Este portal conecta tus mundos: Minecraft, audio modular, visualizaciones simbólicas y enlaces sagrados. Usa la barra superior para invocar tus perfiles y herramientas.</p>
   </main>
 
-  <!-- Carga dinámica de barra.html con ejecución de <link> y <script> -->
+  <!-- Carga dinámica de barra.html con todo embebido -->
   <script>
     fetch("barra.html")
       .then(res => res.text())
@@ -54,8 +54,8 @@
         const temp = document.createElement("div");
         temp.innerHTML = html;
 
-        // Inyectar <link> y <script> en <head>
-        temp.querySelectorAll("link, script").forEach(el => {
+        // Inyectar <style> y <script> en <head>
+        temp.querySelectorAll("style, script").forEach(el => {
           document.head.appendChild(el.cloneNode(true));
         });
 
