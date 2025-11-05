@@ -20,4 +20,3 @@ function animarLogoYRedirigir(nombre, url) {
     window.open(url, "_blank");
   }, 600);
 }
-
