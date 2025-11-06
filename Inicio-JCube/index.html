@@ -3,8 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <title>JotaBlock — Portal Ritual</title>
+
+  <!-- Estilos principales -->
   <link rel="stylesheet" href="tab.css">
+  <link rel="stylesheet" href="barra.css">
+
+  <!-- Scripts principales -->
+  <script src="barra.js" defer></script>
   <script src="tab.js" defer></script>
+
   <style>
     body {
       margin: 0;
@@ -16,10 +23,14 @@
   </style>
 </head>
 <body>
+
+  <!-- Barra superior -->
   <div id="barra-container"></div>
 
+  <!-- Pestañas de packs -->
   <main id="contenedor-pestanas"></main>
 
+  <!-- Modal flotante -->
   <div id="modal" class="modal oculto">
     <div class="modal-contenido">
       <h1 id="modal-titulo"></h1>
@@ -33,6 +44,7 @@
     </div>
   </div>
 
+  <!-- Datos de packs -->
   <script>
     const packs = [
       {
@@ -80,19 +92,18 @@
     ];
   </script>
 
+  <!-- Carga dinámica de barra.html -->
   <script>
     fetch("barra.html")
       .then(res => res.text())
       .then(html => {
         const temp = document.createElement("div");
         temp.innerHTML = html;
-        temp.querySelectorAll("link, script").forEach(el => document.head.appendChild(el.cloneNode(true)));
-        temp.querySelectorAll("div").forEach(el => document.getElementById("barra-container").appendChild(el.cloneNode(true)));
+        temp.querySelectorAll("div").forEach(el => {
+          document.getElementById("barra-container").appendChild(el.cloneNode(true));
+        });
       });
   </script>
+
 </body>
 </html>
-
-
-
-
