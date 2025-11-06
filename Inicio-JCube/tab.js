@@ -78,9 +78,13 @@ function crearPestana(pack, index) {
   texto.appendChild(p);
   texto.appendChild(creditos);
 
-  // Orden fijo: texto primero, imagen segundo
-  pestana.appendChild(texto);
-  pestana.appendChild(img);
+  if (esDerecha) {
+  pestana.appendChild(texto); // texto primero
+  pestana.appendChild(img);   // logo a la derecha
+  } else {
+  pestana.appendChild(img);   // logo a la izquierda
+  pestana.appendChild(texto); // texto a la derecha
+  }
 
   const elegido = coloresHover[Math.floor(Math.random() * coloresHover.length)];
   const hoverColor = `rgba(${elegido.r}, ${elegido.g}, ${elegido.b}, 0.35)`;
@@ -110,3 +114,4 @@ window.addEventListener("DOMContentLoaded", () => {
     packs.forEach((pack, i) => crearPestana(pack, i));
   }
 });
+
