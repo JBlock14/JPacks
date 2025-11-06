@@ -13,7 +13,7 @@ function crearOpcion(id, nombre, logo, link) {
 
   const casilla = document.createElement("div");
   casilla.className = "casilla";
-  casilla.textContent = link ? "✅" : "❌";
+  casilla.textContent = link ? "✔" : "❌";
 
   const fila = document.createElement(link ? "a" : "div");
   fila.className = "opcion";
@@ -114,3 +114,4 @@ window.addEventListener("DOMContentLoaded", () => {
     packs.forEach((pack, i) => crearPestana(pack, i));
   }
 });
+
