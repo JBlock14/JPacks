@@ -33,7 +33,7 @@
       transform: translateX(-100%);
       animation: deslizar 0.8s ease-out forwards;
       transition: background-color 0.4s ease, border 0.4s ease;
-      background-color: rgba(44, 62, 80, 0.5); /* azul medio con transparencia */
+      background-color: rgba(44, 62, 80, 0.35); /* azul medio con transparencia suave */
     }
 
     @keyframes deslizar {
@@ -70,17 +70,6 @@
       text-align: left;
     }
 
-    /* Hover ritual: cambia fondo y bordes */
-    .pestana-inclinada:hover {
-      background-color: rgba(255, 0, 255, 0.5); /* magenta transparente */
-      border-top: 2px solid rgb(255, 0, 255);
-      border-bottom: 2px solid rgb(255, 0, 255);
-    }
-
-    .pestana-inclinada:hover .contenido-pack img {
-      border-radius: 0;
-    }
-
     main {
       padding: 40px 20px;
       max-width: 800px;
@@ -92,7 +81,7 @@
 
   <div id="barra-container"></div>
 
-  <div class="pestana-inclinada">
+  <div class="pestana-inclinada" id="pestana">
     <div class="contenido-pack">
       <img src="../assets/packs/icon/bsl_icon.png" alt="BSL Icon">
       <h2>Best Saturation Pack</h2>
@@ -100,6 +89,38 @@
   </div>
 
   <main></main>
+
+  <!-- Hover aleatorio ritual -->
+  <script>
+    const coloresHover = [
+      { r: 255, g: 80,  b: 80  },  // rojo suave
+      { r: 255, g: 255, b: 100 },  // amarillo suave
+      { r: 100, g: 255, b: 100 },  // verde suave
+      { r: 100, g: 255, b: 255 },  // cian suave
+      { r: 100, g: 100, b: 255 },  // azul suave
+      { r: 255, g: 100, b: 255 }   // magenta suave
+    ];
+
+    const elegido = coloresHover[Math.floor(Math.random() * coloresHover.length)];
+    const hoverColor = `rgba(${elegido.r}, ${elegido.g}, ${elegido.b}, 0.35)`;
+    const borderColor = `rgb(${elegido.r}, ${elegido.g}, ${elegido.b})`;
+
+    const pestana = document.getElementById("pestana");
+
+    pestana.addEventListener("mouseenter", () => {
+      pestana.style.backgroundColor = hoverColor;
+      pestana.style.borderTop = `2px solid ${borderColor}`;
+      pestana.style.borderBottom = `2px solid ${borderColor}`;
+      pestana.querySelector("img").style.borderRadius = "0";
+    });
+
+    pestana.addEventListener("mouseleave", () => {
+      pestana.style.backgroundColor = "rgba(44, 62, 80, 0.35)";
+      pestana.style.borderTop = "none";
+      pestana.style.borderBottom = "none";
+      pestana.querySelector("img").style.borderRadius = "12px";
+    });
+  </script>
 
 </body>
 </html>
