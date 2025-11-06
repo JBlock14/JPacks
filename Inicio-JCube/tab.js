@@ -79,8 +79,8 @@ function crearPestana(pack, index) {
   texto.appendChild(creditos);
 
   if (esDerecha) {
-  pestana.appendChild(texto); // texto primero
-  pestana.appendChild(img);   // logo a la derecha
+  pestana.appendChild(img); // texto primero
+  pestana.appendChild(texto);   // logo a la derecha
   } else {
   pestana.appendChild(img);   // logo a la izquierda
   pestana.appendChild(texto); // texto a la derecha
@@ -114,4 +114,5 @@ window.addEventListener("DOMContentLoaded", () => {
     packs.forEach((pack, i) => crearPestana(pack, i));
   }
 });
+
 
