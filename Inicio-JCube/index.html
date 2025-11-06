@@ -32,12 +32,8 @@
       overflow: hidden;
       transform: translateX(-100%);
       animation: deslizar 0.8s ease-out forwards;
-      transition: border 0.3s ease;
-    }
-
-    .pestana-inclinada:hover {
-      border-top: 2px solid white;
-      border-bottom: 2px solid white;
+      transition: background-color 0.4s ease, border 0.4s ease;
+      background-color: rgba(44, 62, 80, 0.5); /* azul medio con transparencia */
     }
 
     @keyframes deslizar {
@@ -67,15 +63,22 @@
       transition: border-radius 0.3s ease;
     }
 
-    .pestana-inclinada:hover .contenido-pack img {
-      border-radius: 0;
-    }
-
     .contenido-pack h2 {
       font-size: 24px;
       color: #ffffff;
       margin: 0;
       text-align: left;
+    }
+
+    /* Hover ritual: cambia fondo y bordes */
+    .pestana-inclinada:hover {
+      background-color: rgba(255, 0, 255, 0.5); /* magenta transparente */
+      border-top: 2px solid rgb(255, 0, 255);
+      border-bottom: 2px solid rgb(255, 0, 255);
+    }
+
+    .pestana-inclinada:hover .contenido-pack img {
+      border-radius: 0;
     }
 
     main {
@@ -89,7 +92,7 @@
 
   <div id="barra-container"></div>
 
-  <div class="pestana-inclinada" id="pestana">
+  <div class="pestana-inclinada">
     <div class="contenido-pack">
       <img src="../assets/packs/icon/bsl_icon.png" alt="BSL Icon">
       <h2>Best Saturation Pack</h2>
@@ -97,25 +100,6 @@
   </div>
 
   <main></main>
-
-  <!-- Fondo aleatorio ritual -->
-  <script>
-    const coloresAzules = [
-      [20, 36, 55],     // Azul profundo
-      [27, 42, 65],     // Azul noche
-      [44, 62, 80],     // Azul medio
-      [59, 110, 165],   // Azul ritual claro
-      [41, 128, 185],   // Azul celeste profundo
-      [93, 173, 226],   // Azul claro
-      [135, 206, 235],  // Azul cielo
-      [169, 214, 229],  // Azul etéreo
-      [208, 239, 255]   // Azul hielo
-    ];
-
-    const elegido = coloresAzules[Math.floor(Math.random() * coloresAzules.length)];
-    const fondo = `rgba(${elegido[0]}, ${elegido[1]}, ${elegido[2]}, 0.5)`;
-    document.getElementById("pestana").style.backgroundColor = fondo;
-  </script>
 
 </body>
 </html>
