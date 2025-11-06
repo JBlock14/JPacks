@@ -9,7 +9,7 @@
   background-color: rgba(44, 62, 80, 0.35);
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   padding: 24px;
   gap: 8px;
   image-rendering: pixelated;
@@ -190,4 +190,5 @@
 .opcion .casilla.roja {
   color: #ff4444;
 }
+
 
