@@ -71,7 +71,7 @@ function crearPestana(pack, index) {
 
   const creditos = document.createElement("p");
   creditos.className = "creditos";
-  creditos.innerHTML = `<strong>AUTOR:</strong><br>${pack.autor}<br><br><strong>COLABORACION:</strong><br>${pack.colaboracion}`;
+  creditos.innerHTML = `<strong>AUTOR:</strong> ${pack.autor}<br><strong>COLABORACION:</strong> ${pack.colaboracion}`;
 
   texto.appendChild(h2);
   texto.appendChild(p);
