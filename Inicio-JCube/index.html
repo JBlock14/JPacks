@@ -23,15 +23,15 @@
       padding-top: 80px;
     }
 
-    /* Pestaña con lado derecho inclinado */
+    /* Pestaña con borde derecho inclinado hacia abajo */
     .pestana-inclinada {
       position: fixed;
-      top: 100px;
+      top: 80px;
       left: 0;
-      width: 240px;
-      height: 120px;
+      width: 260px;
+      height: 50vh; /* Mitad de la pantalla */
       background-color: #142437;
-      clip-path: polygon(0 0, 220px 0, 240px 100%, 0 100%);
+      clip-path: polygon(0 0, 220px 0, 260px 100%, 0 100%);
       box-shadow: 4px 4px 12px rgba(0,0,0,0.4);
       border: 2px solid #000;
       z-index: 900;
@@ -40,19 +40,30 @@
     }
 
     .contenido-pack {
-      padding: 16px;
-      text-align: center;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      transform: translateY(-10px); /* Ajuste vertical */
       image-rendering: pixelated;
     }
 
     .contenido-pack h2 {
-      font-size: 14px;
+      font-size: 16px;
       color: #00ffff;
-      margin-bottom: 8px;
+      margin-bottom: 12px;
+      text-align: center;
     }
 
     .contenido-pack img {
-      width: 100%;
+      width: 80%;
       height: auto;
       border-radius: 6px;
       box-shadow: 0 0 6px rgba(0,255,255,0.3);
@@ -70,7 +81,7 @@
   <!-- Contenedor de la barra flotante -->
   <div id="barra-container"></div>
 
-  <!-- Pestaña lateral con borde derecho inclinado -->
+  <!-- Pestaña lateral con borde inclinado hacia abajo -->
   <div class="pestana-inclinada">
     <div class="contenido-pack">
       <h2>Best Saturation Pack</h2>
