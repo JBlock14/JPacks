@@ -8,7 +8,7 @@
   <style>
     body {
       margin: 0;
-      background-color: #0d1b2a; /* Fondo sólido BlueDark */
+      background-color: #0d1b2a;
       color: #e0e0e0;
       font-family: 'MinecraftFont', sans-serif;
       padding-top: 80px;
@@ -20,7 +20,6 @@
 
   <main id="contenedor-pestanas"></main>
 
-  <!-- Modal flotante -->
   <div id="modal" class="modal oculto">
     <div class="modal-contenido">
       <h1 id="modal-titulo"></h1>
@@ -34,25 +33,11 @@
     </div>
   </div>
 
-  <!-- Packs definidos aquí -->
   <script>
     const packs = [
       {
         titulo: "Best Saturation Pack",
         descripcion: `Si te gusta vivir la experiencia vanilla con toques más vibrantes y emocionantes, esta será tu mejor opción.
-        Este complemento renová la forma en la que vemos Minecraft dándole más presencia y potencia visual, sin perder la estética vanilla.
-        a diferencia de otros, BSP se encarga de mejorar la saturación del juego sin perder mucho detalle; no como otros complementos.`,
-        autor: "JBlock",
-        colaboracion: "Sin registro...",
-        logo: "../assets/packs/icon/bsl_icon.png",
-        links: {
-          modrinth: "https://modrinth.com/resourcepack/bestsaturation_pack",
-          curseforge: "https://www.curseforge.com/minecraft/texture-packs/bestsaturation-pack",
-          planetmc: "https://www.planetminecraft.com/texture-pack/bestsaturation-pack-6652360/"
-        }
-      },
-        titulo: "Best Saturation Pack",
-        descripcion: `Si te gusta vivir la experiencia vanilla con toques más vibrantes y emocionantes, esta será tu mejor opción.
 Este complemento renová la forma en la que vemos Minecraft dándole más presencia y potencia visual, sin perder la estética vanilla.
 A diferencia de otros, BSP se encarga de mejorar la saturación del juego sin perder mucho detalle; no como otros complementos.`,
         autor: "JBlock",
@@ -64,23 +49,35 @@ A diferencia de otros, BSP se encarga de mejorar la saturación del juego sin pe
           planetmc: "https://www.planetminecraft.com/texture-pack/bestsaturation-pack-6652360/"
         }
       },
-        titulo: "Best Saturation Pack",
-        descripcion: `Si te gusta vivir la experiencia vanilla con toques más vibrantes y emocionantes, esta será tu mejor opción.
-Este complemento renová la forma en la que vemos Minecraft dándole más presencia y potencia visual, sin perder la estética vanilla.
-A diferencia de otros, BSP se encarga de mejorar la saturación del juego sin perder mucho detalle; no como otros complementos.`,
+      {
+        titulo: "Otro Pack Ritual",
+        descripcion: `Este pack transforma la atmósfera de Minecraft en una experiencia más simbólica y envolvente.
+Ideal para quienes buscan una estética ritual sin perder la esencia del juego base.`,
         autor: "JBlock",
-        colaboracion: "Sin registro...",
-        logo: "../assets/packs/icon/bsl_icon.png",
+        colaboracion: "Con ayuda de X",
+        logo: "../assets/packs/icon/otro_icon.png",
         links: {
-          modrinth: "https://modrinth.com/resourcepack/bestsaturation_pack",
-          curseforge: "https://www.curseforge.com/minecraft/texture-packs/bestsaturation-pack",
-          planetmc: "https://www.planetminecraft.com/texture-pack/bestsaturation-pack-6652360/"
+          modrinth: "https://modrinth.com/otro",
+          curseforge: null,
+          planetmc: "https://planetminecraft.com/otro"
+        }
+      },
+      {
+        titulo: "Ritual Clarity Pack",
+        descripcion: `Este pack redefine la interfaz de Minecraft con una estética clara, simbólica y modular.
+Ideal para creadores que buscan armonía entre función y significado, con texturas que respetan la esencia ritual.`,
+        autor: "JBlock",
+        colaboracion: "Inspirado por Jafocraft",
+        logo: "../assets/packs/icon/clarity_icon.png",
+        links: {
+          modrinth: "https://modrinth.com/resourcepack/ritual-clarity-pack",
+          curseforge: null,
+          planetmc: "https://www.planetminecraft.com/texture-pack/ritual-clarity-pack/"
         }
       }
     ];
   </script>
 
-  <!-- Vinculación a barra.html -->
   <script>
     fetch("barra.html")
       .then(res => res.text())
@@ -93,5 +90,3 @@ A diferencia de otros, BSP se encarga de mejorar la saturación del juego sin pe
   </script>
 </body>
 </html>
-
-
