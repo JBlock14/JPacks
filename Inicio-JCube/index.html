@@ -5,11 +5,19 @@
   <title>JotaBlock — Portal Ritual</title>
   <link rel="stylesheet" href="tab.css">
   <script src="tab.js" defer></script>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom right, #0d1b2a, #1e2a3a);
+      color: #e0e0e0;
+      font-family: 'MinecraftFont', sans-serif;
+      padding-top: 80px;
+    }
+  </style>
 </head>
 <body>
   <div id="barra-container"></div>
 
-  <!-- Aquí se insertan las pestañas -->
   <main id="contenedor-pestanas"></main>
 
   <!-- Modal flotante -->
@@ -59,12 +67,15 @@ Ideal para quienes buscan una estética ritual sin perder la esencia del juego b
     ];
   </script>
 
-  <!-- Inserta tab.html -->
+  <!-- Vinculación a barra.html -->
   <script>
-    fetch("tab.html")
+    fetch("barra.html")
       .then(res => res.text())
       .then(html => {
-        document.body.insertAdjacentHTML("beforeend", html);
+        const temp = document.createElement("div");
+        temp.innerHTML = html;
+        temp.querySelectorAll("link, script").forEach(el => document.head.appendChild(el.cloneNode(true)));
+        temp.querySelectorAll("div").forEach(el => document.getElementById("barra-container").appendChild(el.cloneNode(true)));
       });
   </script>
 </body>
