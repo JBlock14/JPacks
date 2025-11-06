@@ -23,26 +23,23 @@
       padding-top: 80px;
     }
 
-    /* Triángulo rectángulo en esquina inferior izquierda */
-    .pestana-triangular {
+    /* Pestaña tipo paralelogramo inclinado */
+    .pestana-paralelogramo {
       position: fixed;
-      bottom: 0;
+      top: 100px;
       left: 0;
-      width: 0;
-      height: 0;
-      border-left: 220px solid #142437;
-      border-top: 220px solid transparent;
+      width: 240px;
+      height: 240px;
+      background-color: #142437;
+      transform: skewY(-20deg);
+      box-shadow: 4px 4px 12px rgba(0,0,0,0.4);
       z-index: 900;
-      clip-path: polygon(0% 100%, 0% 0%, 100% 100%);
-      overflow: visible;
+      overflow: hidden;
+      border: 2px solid #000;
     }
 
-    .contenido-triangulo {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 220px;
-      height: 220px;
+    .contenido-pack {
+      transform: skewY(20deg); /* Corrige la inclinación del contenido */
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -51,16 +48,17 @@
       text-align: center;
       padding: 20px;
       box-sizing: border-box;
+      height: 100%;
       image-rendering: pixelated;
     }
 
-    .contenido-triangulo h2 {
+    .contenido-pack h2 {
       font-size: 14px;
       color: #00ffff;
       margin-bottom: 10px;
     }
 
-    .contenido-triangulo img {
+    .contenido-pack img {
       width: 100%;
       height: auto;
       border-radius: 8px;
@@ -79,9 +77,9 @@
   <!-- Contenedor de la barra flotante -->
   <div id="barra-container"></div>
 
-  <!-- Pestaña triangular inferior izquierda -->
-  <div class="pestana-triangular">
-    <div class="contenido-triangulo">
+  <!-- Pestaña lateral tipo paralelogramo -->
+  <div class="pestana-paralelogramo">
+    <div class="contenido-pack">
       <h2>Best Saturation Pack</h2>
       <img src="../assets/packs/icon/bsl_icon.png" alt="BSL Icon">
     </div>
