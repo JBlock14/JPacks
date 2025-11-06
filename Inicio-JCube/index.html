@@ -26,7 +26,7 @@
       top: 80px;
       left: 0;
       width: 50vw;
-      height: 256px;
+      height: 288px;
       clip-path: polygon(0 0, 100% 0, calc(100% - 40px) 100%, 0 100%);
       z-index: 900;
       overflow: hidden;
@@ -49,9 +49,9 @@
       display: flex;
       flex-direction: row;
       align-items: center;
-      justify-content: center;
-      padding: 40px;
-      gap: 40px;
+      justify-content: flex-start;
+      padding: 32px 32px 32px 24px;
+      gap: 28px;
       image-rendering: pixelated;
     }
 
@@ -61,6 +61,7 @@
       border-radius: 12px;
       object-fit: contain;
       transition: border-radius 0.3s ease;
+      margin-left: -12px;
     }
 
     .pestana-inclinada:hover {
@@ -76,9 +77,10 @@
     .contenido-texto {
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      justify-content: flex-start;
       gap: 8px;
       max-width: 60%;
+      margin-top: -12px;
     }
 
     .contenido-texto h2 {
