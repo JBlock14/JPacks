@@ -23,7 +23,7 @@
       padding-top: 80px;
     }
 
-    /* Pestaña limpia con borde derecho inclinado hacia abajo */
+    /* Pestaña con borde derecho inclinado hacia arriba */
     .pestana-inclinada {
       position: fixed;
       top: 80px;
@@ -31,7 +31,7 @@
       width: 50vw;
       height: 160px;
       background-color: #142437;
-      clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 100%, 0 100%);
+      clip-path: polygon(0 0, 100% 0, calc(100% - 40px) 100%, 0 100%);
       z-index: 900;
       overflow: hidden;
       font-family: 'MinecraftFont', sans-serif;
@@ -40,26 +40,27 @@
     .contenido-pack {
       width: 100%;
       height: 100%;
-      padding: 20px;
       box-sizing: border-box;
       display: flex;
-      flex-direction: column;
-      justify-content: center;
+      flex-direction: row;
       align-items: center;
+      justify-content: center;
+      padding: 0 20px;
       image-rendering: pixelated;
     }
 
-    .contenido-pack h2 {
-      font-size: 16px;
-      color: #00ffff;
-      margin-bottom: 12px;
-      text-align: center;
+    .contenido-pack img {
+      height: 100%;
+      width: auto;
+      margin-right: 20px;
+      border-radius: 0;
     }
 
-    .contenido-pack img {
-      width: 80%;
-      height: auto;
-      border-radius: 0;
+    .contenido-pack h2 {
+      font-size: 18px;
+      color: #00ffff;
+      margin: 0;
+      text-align: left;
     }
 
     main {
@@ -74,11 +75,11 @@
   <!-- Contenedor de la barra flotante -->
   <div id="barra-container"></div>
 
-  <!-- Pestaña lateral limpia e inclinada -->
+  <!-- Pestaña lateral con imagen expandida y título a la derecha -->
   <div class="pestana-inclinada">
     <div class="contenido-pack">
-      <h2>Best Saturation Pack</h2>
       <img src="../assets/packs/icon/bsl_icon.png" alt="BSL Icon">
+      <h2>Best Saturation Pack</h2>
     </div>
   </div>
 
