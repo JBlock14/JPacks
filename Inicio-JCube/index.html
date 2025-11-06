@@ -4,11 +4,9 @@
   <meta charset="UTF-8">
   <title>JotaBlock — Portal Ritual</title>
 
-  <!-- Estilos y lógica de la barra flotante -->
   <link rel="stylesheet" href="barra.css">
   <script src="barra.js" defer></script>
 
-  <!-- Estilos propios -->
   <style>
     @font-face {
       font-family: 'MinecraftFont';
@@ -23,7 +21,6 @@
       padding-top: 80px;
     }
 
-    /* Pestaña con borde derecho inclinado hacia arriba */
     .pestana-inclinada {
       position: fixed;
       top: 80px;
@@ -34,7 +31,21 @@
       clip-path: polygon(0 0, 100% 0, calc(100% - 40px) 100%, 0 100%);
       z-index: 900;
       overflow: hidden;
-      font-family: 'MinecraftFont', sans-serif;
+      opacity: 0.5;
+      transform: translateX(-100%);
+      animation: deslizar 0.8s ease-out forwards;
+      transition: border 0.3s ease;
+    }
+
+    .pestana-inclinada:hover {
+      border-top: 2px solid white;
+      border-bottom: 2px solid white;
+    }
+
+    @keyframes deslizar {
+      to {
+        transform: translateX(0);
+      }
     }
 
     .contenido-pack {
@@ -55,6 +66,11 @@
       width: auto;
       border-radius: 12px;
       object-fit: contain;
+      transition: border-radius 0.3s ease;
+    }
+
+    .pestana-inclinada:hover .contenido-pack img {
+      border-radius: 0;
     }
 
     .contenido-pack h2 {
@@ -73,10 +89,8 @@
 </head>
 <body>
 
-  <!-- Contenedor de la barra flotante -->
   <div id="barra-container"></div>
 
-  <!-- Pestaña lateral refinada -->
   <div class="pestana-inclinada">
     <div class="contenido-pack">
       <img src="../assets/packs/icon/bsl_icon.png" alt="BSL Icon">
@@ -84,10 +98,8 @@
     </div>
   </div>
 
-  <!-- Contenido principal vacío -->
   <main></main>
 
-  <!-- Carga dinámica de barra.html -->
   <script>
     fetch("barra.html")
       .then(res => res.text())
@@ -107,4 +119,3 @@
 
 </body>
 </html>
-
