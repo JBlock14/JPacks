@@ -29,7 +29,7 @@
       top: 80px;
       left: 0;
       width: 50vw;
-      height: 160px;
+      height: 512px;
       background-color: #142437;
       clip-path: polygon(0 0, 100% 0, calc(100% - 40px) 100%, 0 100%);
       z-index: 900;
@@ -45,19 +45,20 @@
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      padding: 0 20px;
+      padding: 40px;
+      gap: 40px;
       image-rendering: pixelated;
     }
 
     .contenido-pack img {
-      height: 100%;
+      height: 80%;
       width: auto;
-      margin-right: 20px;
-      border-radius: 0;
+      border-radius: 12px;
+      object-fit: contain;
     }
 
     .contenido-pack h2 {
-      font-size: 18px;
+      font-size: 24px;
       color: #00ffff;
       margin: 0;
       text-align: left;
@@ -75,7 +76,7 @@
   <!-- Contenedor de la barra flotante -->
   <div id="barra-container"></div>
 
-  <!-- Pestaña lateral con imagen expandida y título a la derecha -->
+  <!-- Pestaña lateral refinada -->
   <div class="pestana-inclinada">
     <div class="contenido-pack">
       <img src="../assets/packs/icon/bsl_icon.png" alt="BSL Icon">
