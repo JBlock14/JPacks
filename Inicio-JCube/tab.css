@@ -28,7 +28,6 @@
   clip-path: polygon(40px 0, 100% 0, 100% 100%, 0 100%);
   transform: translateX(100%);
   animation: deslizar-derecha 0.8s ease-out forwards;
-  flex-direction: row-reverse;
 }
 
 @keyframes deslizar-izquierda {
