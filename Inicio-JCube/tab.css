@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 24px;
-  gap: 20px;
+  gap: 8px;
   image-rendering: pixelated;
   cursor: pointer;
 }
@@ -190,3 +190,4 @@
 .opcion .casilla.roja {
   color: #ff4444;
 }
+
