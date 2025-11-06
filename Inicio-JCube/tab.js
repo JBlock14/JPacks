@@ -78,14 +78,9 @@ function crearPestana(pack, index) {
   texto.appendChild(p);
   texto.appendChild(creditos);
 
-  // Orden corregido: si es derecha, primero texto, luego imagen
-  if (esDerecha) {
-    pestana.appendChild(texto);
-    pestana.appendChild(img);
-  } else {
-    pestana.appendChild(img);
-    pestana.appendChild(texto);
-  }
+  // Orden fijo: texto primero, imagen segundo
+  pestana.appendChild(texto);
+  pestana.appendChild(img);
 
   const elegido = coloresHover[Math.floor(Math.random() * coloresHover.length)];
   const hoverColor = `rgba(${elegido.r}, ${elegido.g}, ${elegido.b}, 0.35)`;
