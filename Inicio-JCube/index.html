@@ -23,26 +23,21 @@
       padding-top: 80px;
     }
 
-    /* Pestaña con borde derecho inclinado hacia abajo */
+    /* Pestaña limpia con borde derecho inclinado hacia abajo */
     .pestana-inclinada {
       position: fixed;
       top: 80px;
       left: 0;
-      width: 260px;
-      height: 50vh; /* Mitad de la pantalla */
+      width: 50vw;
+      height: 160px;
       background-color: #142437;
-      clip-path: polygon(0 0, 220px 0, 260px 100%, 0 100%);
-      box-shadow: 4px 4px 12px rgba(0,0,0,0.4);
-      border: 2px solid #000;
+      clip-path: polygon(0 0, calc(100% - 40px) 0, 100% 100%, 0 100%);
       z-index: 900;
       overflow: hidden;
       font-family: 'MinecraftFont', sans-serif;
     }
 
     .contenido-pack {
-      position: absolute;
-      top: 0;
-      left: 0;
       width: 100%;
       height: 100%;
       padding: 20px;
@@ -51,7 +46,6 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      transform: translateY(-10px); /* Ajuste vertical */
       image-rendering: pixelated;
     }
 
@@ -65,8 +59,7 @@
     .contenido-pack img {
       width: 80%;
       height: auto;
-      border-radius: 6px;
-      box-shadow: 0 0 6px rgba(0,255,255,0.3);
+      border-radius: 0;
     }
 
     main {
@@ -81,7 +74,7 @@
   <!-- Contenedor de la barra flotante -->
   <div id="barra-container"></div>
 
-  <!-- Pestaña lateral con borde inclinado hacia abajo -->
+  <!-- Pestaña lateral limpia e inclinada -->
   <div class="pestana-inclinada">
     <div class="contenido-pack">
       <h2>Best Saturation Pack</h2>
