@@ -1,7 +1,7 @@
 .pestana {
   position: fixed;
-  width: 50vw;
-  height: 200px;
+  width: 40vw;
+  height: 125px;
   z-index: 900;
   overflow: hidden;
   transition: background-color 0.4s ease, border 0.4s ease;
@@ -162,4 +162,5 @@
   font-size: 14px;
   color: #ffffff;
 }
+
 
