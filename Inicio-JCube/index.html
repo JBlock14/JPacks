@@ -28,8 +28,6 @@
       height: 256px;
       z-index: 900;
       overflow: hidden;
-      transform: translateX(-100%);
-      animation: deslizar 0.8s ease-out forwards;
       transition: background-color 0.4s ease, border 0.4s ease;
       background-color: rgba(44, 62, 80, 0.35);
     }
@@ -38,15 +36,25 @@
       top: 80px;
       left: 0;
       clip-path: polygon(0 0, 100% 0, calc(100% - 40px) 100%, 0 100%);
+      transform: translateX(-100%);
+      animation: deslizar-izquierda 0.8s ease-out forwards;
     }
 
     .pestana-inclinada-derecha {
       top: 336px;
       right: 0;
       clip-path: polygon(40px 0, 100% 0, 100% 100%, 0 100%);
+      transform: translateX(100%);
+      animation: deslizar-derecha 0.8s ease-out forwards;
     }
 
-    @keyframes deslizar {
+    @keyframes deslizar-izquierda {
+      to {
+        transform: translateX(0);
+      }
+    }
+
+    @keyframes deslizar-derecha {
       to {
         transform: translateX(0);
       }
@@ -184,6 +192,22 @@
 
     aplicarHover(document.getElementById("pestana1"));
     aplicarHover(document.getElementById("pestana2"));
+
+    // Vinculación con barra.html
+    fetch("barra.html")
+      .then(res => res.text())
+      .then(html => {
+        const temp = document.createElement("div");
+        temp.innerHTML = html;
+
+        temp.querySelectorAll("link, script").forEach(el => {
+          document.head.appendChild(el.cloneNode(true));
+        });
+
+        temp.querySelectorAll("div").forEach(el => {
+          document.getElementById("barra-container").appendChild(el.cloneNode(true));
+        });
+      });
   </script>
 
 </body>
