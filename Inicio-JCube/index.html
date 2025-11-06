@@ -26,7 +26,7 @@
       top: 80px;
       left: 0;
       width: 50vw;
-      height: 300px;
+      height: 256px;
       clip-path: polygon(0 0, 100% 0, calc(100% - 40px) 100%, 0 100%);
       z-index: 900;
       overflow: hidden;
@@ -64,16 +64,6 @@
       margin-left: -12px;
     }
 
-    .pestana-inclinada:hover {
-      background-color: rgba(255, 100, 255, 0.35);
-      border-top: 2px solid rgb(255, 100, 255);
-      border-bottom: 2px solid rgb(255, 100, 255);
-    }
-
-    .pestana-inclinada:hover .contenido-pack img {
-      border-radius: 0;
-    }
-
     .contenido-texto {
       display: flex;
       flex-direction: column;
@@ -90,12 +80,17 @@
       text-align: left;
     }
 
-    .contenido-texto p {
+    .contenido-texto p.descripcion {
       font-size: 14px;
       color: #e0e0e0;
       margin: 0;
       text-align: left;
       line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
 
     .contenido-texto .creditos {
@@ -120,9 +115,11 @@
       <img src="../assets/packs/icon/bsl_icon.png" alt="BSL Icon">
       <div class="contenido-texto">
         <h2>Best Saturation Pack</h2>
-        <p>Si te gusta vivir la experiencia vanilla con toques más vibrantes y emocionantes, esta será tu mejor opción.<br>
-        Este complemento renová la forma en la que vemos Minecraft dándole más presencia y potencia visual, sin perder la estética vanilla.<br>
-        A diferencia de otros, BSP se encarga de mejorar la saturación del juego sin perder mucho detalle; no como otros complementos.</p>
+        <p class="descripcion">
+          Si te gusta vivir la experiencia vanilla con toques más vibrantes y emocionantes, esta será tu mejor opción.
+          Este complemento renová la forma en la que vemos Minecraft dándole más presencia y potencia visual, sin perder la estética vanilla.
+          A diferencia de otros, BSP se encarga de mejorar la saturación del juego sin perder mucho detalle; no como otros complementos.
+        </p>
         <p class="creditos">Autor: JBlock &nbsp;&nbsp;&nbsp; Colaboración: Sin registro...</p>
       </div>
     </div>
@@ -130,6 +127,37 @@
 
   <main></main>
 
+  <!-- Hover aleatorio ritual -->
+  <script>
+    const coloresHover = [
+      { r: 255, g: 80,  b: 80  },  // rojo suave
+      { r: 255, g: 255, b: 100 },  // amarillo suave
+      { r: 100, g: 255, b: 100 },  // verde suave
+      { r: 100, g: 255, b: 255 },  // cian suave
+      { r: 100, g: 100, b: 255 },  // azul suave
+      { r: 255, g: 100, b: 255 }   // magenta suave
+    ];
+
+    const elegido = coloresHover[Math.floor(Math.random() * coloresHover.length)];
+    const hoverColor = `rgba(${elegido.r}, ${elegido.g}, ${elegido.b}, 0.35)`;
+    const borderColor = `rgb(${elegido.r}, ${elegido.g}, ${elegido.b})`;
+
+    const pestana = document.getElementById("pestana");
+
+    pestana.addEventListener("mouseenter", () => {
+      pestana.style.backgroundColor = hoverColor;
+      pestana.style.borderTop = `2px solid ${borderColor}`;
+      pestana.style.borderBottom = `2px solid ${borderColor}`;
+      pestana.querySelector("img").style.borderRadius = "0";
+    });
+
+    pestana.addEventListener("mouseleave", () => {
+      pestana.style.backgroundColor = "rgba(44, 62, 80, 0.35)";
+      pestana.style.borderTop = "none";
+      pestana.style.borderBottom = "none";
+      pestana.querySelector("img").style.borderRadius = "12px";
+    });
+  </script>
+
 </body>
 </html>
-
