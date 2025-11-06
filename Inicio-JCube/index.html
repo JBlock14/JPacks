@@ -12,7 +12,7 @@
   <style>
     @font-face {
       font-family: 'MinecraftFont';
-      src: url("../assets/gui/fonts/minecraft_font.woff") format("woff");
+      src: url("../minecraft_font.woff") format("woff");
     }
 
     body {
@@ -23,49 +23,48 @@
       padding-top: 80px;
     }
 
-    /* Pestaña lateral izquierda */
-    .pestana-pack {
+    /* Triángulo rectángulo en esquina inferior izquierda */
+    .pestana-triangular {
       position: fixed;
-      top: 100px;
+      bottom: 0;
       left: 0;
-      width: 220px;
-      background-color: #142437;
-      border-top-right-radius: 12px;
-      box-shadow: 4px 4px 12px rgba(0,0,0,0.4);
+      width: 0;
+      height: 0;
+      border-left: 220px solid #142437;
+      border-top: 220px solid transparent;
       z-index: 900;
-      font-family: 'MinecraftFont', sans-serif;
-      overflow: hidden;
+      clip-path: polygon(0% 100%, 0% 0%, 100% 100%);
+      overflow: visible;
     }
 
-    .pestana-pack .contenido-pack {
-      padding: 20px;
-      text-align: center;
-    }
-
-    .pestana-pack h2 {
-      font-size: 16px;
-      margin-bottom: 12px;
-      color: #00ffff;
-    }
-
-    .pestana-pack img {
-      width: 100%;
-      height: auto;
-      image-rendering: pixelated;
-      border-radius: 8px;
-      box-shadow: 0 0 6px rgba(0,255,255,0.3);
-    }
-
-    /* Esquina inferior derecha doblada */
-    .pestana-pack .doblez-inferior {
+    .contenido-triangulo {
       position: absolute;
       bottom: 0;
-      right: 0;
-      width: 40px;
-      height: 40px;
-      background-color: #0d1b2a;
-      clip-path: polygon(100% 100%, 0% 100%, 100% 0%);
-      box-shadow: -2px -2px 6px rgba(0,0,0,0.3);
+      left: 0;
+      width: 220px;
+      height: 220px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      font-family: 'MinecraftFont', sans-serif;
+      text-align: center;
+      padding: 20px;
+      box-sizing: border-box;
+      image-rendering: pixelated;
+    }
+
+    .contenido-triangulo h2 {
+      font-size: 14px;
+      color: #00ffff;
+      margin-bottom: 10px;
+    }
+
+    .contenido-triangulo img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 6px rgba(0,255,255,0.3);
     }
 
     main {
@@ -80,13 +79,12 @@
   <!-- Contenedor de la barra flotante -->
   <div id="barra-container"></div>
 
-  <!-- Pestaña lateral izquierda -->
-  <div class="pestana-pack">
-    <div class="contenido-pack">
+  <!-- Pestaña triangular inferior izquierda -->
+  <div class="pestana-triangular">
+    <div class="contenido-triangulo">
       <h2>Best Saturation Pack</h2>
       <img src="../assets/packs/icon/bsl_icon.png" alt="BSL Icon">
     </div>
-    <div class="doblez-inferior"></div>
   </div>
 
   <!-- Contenido principal vacío -->
