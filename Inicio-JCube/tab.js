@@ -12,7 +12,7 @@ function crearOpcion(id, nombre, logo, link) {
   contenedor.innerHTML = "";
 
   const casilla = document.createElement("div");
-  casilla.className = "casilla";
+  casilla.className = "casilla " + (link ? "verde" : "roja");
   casilla.textContent = link ? "✔" : "❌";
 
   const fila = document.createElement(link ? "a" : "div");
@@ -55,7 +55,7 @@ document.getElementById("modal").addEventListener("click", e => {
 function crearPestana(pack, index) {
   const pestana = document.createElement("div");
   pestana.className = "pestana " + (index % 2 === 0 ? "izquierda" : "derecha");
-  pestana.style.top = `${80 + index * 256}px`;
+  pestana.style.top = `${80 + index * 140}px`;
 
   const img = document.createElement("img");
   img.src = pack.logo;
@@ -108,10 +108,8 @@ function crearPestana(pack, index) {
   document.getElementById("contenedor-pestanas").appendChild(pestana);
 }
 
-// Espera a que el array `packs` esté definido en index.html
 window.addEventListener("DOMContentLoaded", () => {
   if (typeof packs !== "undefined") {
     packs.forEach((pack, i) => crearPestana(pack, i));
   }
 });
-
