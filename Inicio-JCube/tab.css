@@ -1,6 +1,6 @@
 .pestana {
   position: fixed;
-  width: 40vw;
+  width: 45vw;
   height: 125px;
   z-index: 900;
   overflow: hidden;
@@ -182,3 +182,4 @@
 .opcion .casilla.roja {
   color: #ff4444;
 }
+
