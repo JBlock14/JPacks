@@ -11,7 +11,7 @@
   align-items: center;
   justify-content: flex-start;
   padding: 24px;
-  gap: 8px;
+  gap: 14px;
   image-rendering: pixelated;
   cursor: pointer;
 }
@@ -41,9 +41,9 @@
 }
 
 .pestana img {
-  height: 80%;
+  height: 90%;
   width: auto;
-  border-radius: 12px;
+  border-radius: 8px;
   object-fit: contain;
   transition: border-radius 0.3s ease;
 }
@@ -190,5 +190,6 @@
 .opcion .casilla.roja {
   color: #ff4444;
 }
+
 
 
