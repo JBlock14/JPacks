@@ -33,7 +33,6 @@
       transform: translateX(-100%);
       animation: deslizar 0.8s ease-out forwards;
       transition: border 0.3s ease;
-      background-color: rgba(20, 36, 55, 0.5); /* valor inicial */
     }
 
     .pestana-inclinada:hover {
@@ -74,7 +73,7 @@
 
     .contenido-pack h2 {
       font-size: 24px;
-      color: #00ffff;
+      color: #ffffff;
       margin: 0;
       text-align: left;
     }
@@ -92,51 +91,30 @@
 
   <div class="pestana-inclinada" id="pestana">
     <div class="contenido-pack">
-      <img id="packImage" src="../assets/packs/icon/bsl_icon.png" alt="BSL Icon">
+      <img src="../assets/packs/icon/bsl_icon.png" alt="BSL Icon">
       <h2>Best Saturation Pack</h2>
     </div>
   </div>
 
   <main></main>
 
-  <!-- Color extractor -->
+  <!-- Fondo aleatorio ritual -->
   <script>
-    function getDominantColor(imgElement, callback) {
-      const canvas = document.createElement('canvas');
-      const ctx = canvas.getContext('2d');
-      canvas.width = imgElement.naturalWidth;
-      canvas.height = imgElement.naturalHeight;
-      ctx.drawImage(imgElement, 0, 0);
+    const coloresAzules = [
+      [20, 36, 55],     // Azul profundo
+      [27, 42, 65],     // Azul noche
+      [44, 62, 80],     // Azul medio
+      [59, 110, 165],   // Azul ritual claro
+      [41, 128, 185],   // Azul celeste profundo
+      [93, 173, 226],   // Azul claro
+      [135, 206, 235],  // Azul cielo
+      [169, 214, 229],  // Azul etéreo
+      [208, 239, 255]   // Azul hielo
+    ];
 
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const data = imageData.data;
-      const colorCount = {};
-      let maxCount = 0;
-      let dominant = [20, 36, 55]; // fallback
-
-      for (let i = 0; i < data.length; i += 4) {
-        const key = `${data[i]},${data[i+1]},${data[i+2]}`;
-        colorCount[key] = (colorCount[key] || 0) + 1;
-        if (colorCount[key] > maxCount) {
-          maxCount = colorCount[key];
-          dominant = [data[i], data[i+1], data[i+2]];
-        }
-      }
-
-      callback(`rgba(${dominant[0]}, ${dominant[1]}, ${dominant[2]}, 0.5)`);
-    }
-
-    window.addEventListener('load', () => {
-      const img = document.getElementById('packImage');
-      img.onload = () => {
-        getDominantColor(img, (rgba) => {
-          document.getElementById('pestana').style.backgroundColor = rgba;
-        });
-      };
-      if (img.complete) {
-        img.onload(); // trigger manually if already loaded
-      }
-    });
+    const elegido = coloresAzules[Math.floor(Math.random() * coloresAzules.length)];
+    const fondo = `rgba(${elegido[0]}, ${elegido[1]}, ${elegido[2]}, 0.5)`;
+    document.getElementById("pestana").style.backgroundColor = fondo;
   </script>
 
 </body>
