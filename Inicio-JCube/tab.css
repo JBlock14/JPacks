@@ -82,6 +82,8 @@
   font-size: 11px;
   color: #cccccc;
   margin-top: 4px;
+  text-transform: uppercase;
+  font-weight: normal;
 }
 
 .modal {
@@ -182,4 +184,3 @@
 .opcion .casilla.roja {
   color: #ff4444;
 }
-
