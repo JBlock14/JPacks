@@ -54,7 +54,8 @@ document.getElementById("modal").addEventListener("click", e => {
 
 function crearPestana(pack, index) {
   const pestana = document.createElement("div");
-  pestana.className = "pestana " + (index % 2 === 0 ? "izquierda" : "derecha");
+  const esDerecha = index % 2 !== 0;
+  pestana.className = "pestana " + (esDerecha ? "derecha" : "izquierda");
   pestana.style.top = `${80 + index * 140}px`;
 
   const img = document.createElement("img");
@@ -77,12 +78,13 @@ function crearPestana(pack, index) {
   texto.appendChild(p);
   texto.appendChild(creditos);
 
-  if (index % 2 === 0) {
-    pestana.appendChild(img);
+  // Orden corregido: si es derecha, primero texto, luego imagen
+  if (esDerecha) {
     pestana.appendChild(texto);
+    pestana.appendChild(img);
   } else {
-    pestana.appendChild(texto);
     pestana.appendChild(img);
+    pestana.appendChild(texto);
   }
 
   const elegido = coloresHover[Math.floor(Math.random() * coloresHover.length)];
